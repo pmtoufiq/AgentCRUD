@@ -1,0 +1,312 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/CustomContents/Agent.js"></script>
+<div class="container">
+
+    <h2>Agent Record</h2>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add New Agent</button><br /><br />
+
+    <table class="table table-bordered table-hover small">
+
+        <thead>
+
+            <tr>
+
+                <th>
+
+                    BusinessId
+
+                </th>
+
+                <th>
+
+                    Code
+
+                </th>
+
+                <th>
+
+                    Email
+
+                </th>
+
+                <th>
+
+                    Name
+
+                </th>
+
+                <th>
+
+                    Street
+
+                </th>
+
+                <th>
+
+                    City
+
+                </th>
+                <th>
+
+                    State
+
+                </th>
+                <th>
+
+                    Country
+
+                </th>
+                <th>
+
+                    Mobile
+
+                </th>
+                <th>
+
+                    ContactPerson
+
+                </th>
+                <th>
+
+                    ReferredBy
+
+                </th>
+                <th>
+
+                    Logo
+
+                </th>
+                <th>
+
+                    LoginUrl
+
+                </th>
+
+                <th>
+
+                    CurrentBalance
+
+                </th>
+                <th>
+
+                    Action
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody class="tbody"></tbody>
+
+    </table>
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                <h4 class="modal-title" id="myModalLabel">Add Agent</h4>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form id="agentForm" enctype="multipart/form-data">
+
+                    <div class="form-group" hidden>
+
+                        <label for="BusinessId">Business ID</label>
+
+                        <input type="text" class="form-control" id="BusinessId" placeholder="Id" />
+
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-12">
+
+                        <label for="Code">Code</label>
+
+                        <input type="text" class="form-control" id="Code" placeholder="Code" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <label for="Email">Email</label>
+
+                        <input type="text" class="form-control" id="Email" placeholder="Email" />
+                        <span id="error" style="display:none;color:red;">Wrong email</span>
+
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+
+                            <input type="text" class="form-control" id="Name" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="Street">Street</label>
+
+                            <input type="text" class="form-control" id="Street" placeholder="Street" />
+
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="City">City</label>
+
+                            <input type="text" class="form-control" id="City" placeholder="City" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="State">State</label>
+
+                            <input type="text" class="form-control" id="State" placeholder="State" />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Zip">Zip</label>
+
+                            <input type="text" class="form-control" id="Zip" placeholder="Zip" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="Country">Country</label>
+
+                            <input type="text" class="form-control" id="Country" placeholder="Country" />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Mobile">Mobile</label>
+
+                            <input type="text" class="form-control" id="Mobile" placeholder="Mobile" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="Phone">Phone</label>
+
+                            <input type="text" class="form-control" id="Phone" placeholder="Phone" />
+
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="ContactPerson">Contact Person</label>
+
+                            <input type="text" class="form-control" id="ContactPerson" placeholder="ContactPerson" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="ReferredBy">Referred By</label>
+
+                            <input type="text" class="form-control" id="ReferredBy" placeholder="ReferredBy" />
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Balance">Balance</label>
+
+                            <input type="text" class="form-control numbersOnly" id="Balance" placeholder="Balance" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="LoginUrl">Login Url</label>
+
+                            <input type="text" class="form-control" id="LoginUrl" placeholder="LoginUrl" />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="SecurityCode">Security Code</label>
+
+                            <input type="text" class="form-control numbersOnly" id="SecurityCode" placeholder="SecurityCode" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="SMTPPort">SMTP Port</label>
+
+                            <input type="text" class="form-control numbersOnly" id="SMTPPort" placeholder="SMTPPort" />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="CurrentBalance">Current Balance</label>
+
+                            <input type="text" class="form-control numbersOnly" id="CurrentBalance" placeholder="CurrentBalance" />
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label for="Status">Status</label><br />
+                            <input id="Status" type="checkbox" value="11" class="a" hidden />
+                            <input id="Status" type="checkbox" value="2" class="a" /> New
+                            <input id="Status" type="checkbox" value="1" class="a" /> Active
+                            <input id="Status" type="checkbox" value="0" class="a" /> Inactive
+                            <input id="Status" type="checkbox" value="3" class="a" /> Locked
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="imageBrowse">Logo</label>
+                            <input type="file" id="imageBrowse" />
+                        </div>
+                        <hr />
+
+                        <div id="imgPreview" class="thumbnail col-md-6" style="display:none">
+                            <img class="img-responsive" id="targetImg" />
+                            <div class="caption">
+                                <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i></a>
+                                <span id="description"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
+
+                <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
